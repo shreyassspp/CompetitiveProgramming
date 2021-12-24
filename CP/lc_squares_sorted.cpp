@@ -20,28 +20,55 @@ int main()
         nums.push_back(x);
     }
 
-    int i =0; 
-    int j =nums.size()-1;
-    vector<int> ans;
+    int count;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]<0)
+                count++;
+            else
+                break;
+        }
         
-    long long a = nums[i]*nums[i];
-    long long b =  nums[j]*nums[j];
+        int i =count-1; int j =count;
         
-        while(i<=j)
+        long long a = nums[i]*nums[i];
+        long long b = nums[j]*nums[j];
+        
+        vector<int> ans;
+        
+        while(i>0 && j<(nums.size()-1))
         {
             if(a<b)
             {
                 ans.push_back(a);
-                i++;
-                a= nums[i]*nums[i];
+                i--;
+                a = nums[i]*nums[i];
+                
             }
             else
             {
                 ans.push_back(b);
-                j--;
+                j++;
                 b = nums[j]*nums[j];
             }
         }
+
+        
+        
+        while(i>=0)
+        {
+            a = nums[i]*nums[i];
+            ans.push_back(a);
+                i--;
+        }
+        
+          while(j<nums.size())
+        {
+            b = nums[j]*nums[j];
+            ans.push_back(b);
+                j++;
+        }
+        
 
     
     for(int i = 0;i<ans.size();i++)
