@@ -16,26 +16,32 @@ int main()
 
     int ans =0;
 
-    map<char,string> stock;
+    map<char,vector<int>> stock;
 
     for(int i =0;i<s.length();i+=2)
     {
         char c = s[i];
         c = char(c-32);
-        stock [c]= stock[c]+to_string(i);
+        stock [c].push_back(i);
     }
 
     for(int i =1;i<s.length();i+=2)
     {
         if(stock.find(s[i])!=stock.end())
         {
-            string s1 = stock[s[i]];
-            if((int(s1[0])-48)>i)
+            
+            if(!stock[s[i]].empty())
+        {
+            int pos = stock[s[i]][0];
+            if(pos>i)
             ans++;
             else
             {
-                stock[s[i]] = s1.substr(1,s1.length());
+                stock[s[i]].erase(stock[s[i]].begin());
             }
+         }
+            else
+            ans++;
         }
         else
         {
