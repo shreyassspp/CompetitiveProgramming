@@ -12,20 +12,20 @@ int main()
 
     for(int i = 0;i<n;i++)
     {
-        cout<<" ";
         for(int j = i;j<n;j++)
-        cout<<" ";
-
-        if(!i)
-        cout<<" ";
+        cout<<"  ";
 
         for (int  j = 0;j<=i; j++)
         {
             cout<<j<<" ";
         }
 
-        for(int j = i-1;j>=0;j--)
+        for(int j = i-1;j>=0;j--){
+         if(j)
         cout<<j<<" ";
+        else
+        cout<<j;
+        }
 
 
         cout<<"\n";
@@ -42,12 +42,8 @@ int main()
 
     for(int i = 0;i<n;i++)
     {
-        cout<<" ";
         for(int j = 0;j<=i;j++)
-        cout<<" ";
-
-        if(n-i==1)
-        cout<<" ";
+        cout<<"  ";
 
         for (int  j = 0;j<(n-i); j++)
         {
@@ -55,7 +51,13 @@ int main()
         }
 
         for(int j = n-i-2;j>=0;j--)
+        {
+            if(j)
         cout<<j<<" ";
+        else
+        cout<<j;
+        }
+        
 
 
         cout<<"\n";
