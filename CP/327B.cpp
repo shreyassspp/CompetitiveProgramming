@@ -8,6 +8,11 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
+    int n ;
+    cin>>n;
 
+    for(int i =n;i<2*n;i++)
+    cout<<i<<" ";
+    
     return 0;
 }
