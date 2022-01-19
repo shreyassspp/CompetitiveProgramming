@@ -75,5 +75,6 @@
         "variant": "cpp",
         "bit": "cpp",
         "charconv": "cpp"
-    }
+    },
+    "ros.distro": "noetic"
 }
