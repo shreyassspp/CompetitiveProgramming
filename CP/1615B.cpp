@@ -2,29 +2,37 @@
 using namespace std;
 typedef long long ll;
 
-void precompute();
 
 const int size_arr = 1e6+10;
-int arr[size_arr];
+
+int r[size_arr];
+int l[size_arr];
 
 void precompute()
 {
-
-    ll ans =1;
-    int count =0;
-
-    for (int i = 1; i <=20; i++)
+    // Make an array and store the most occuring bit out of the map for the location.
+    // Answer is the length of segment - maximum number of most set bit in that range.
+    ll ans = 1;
+    l[1]=0;
+    l[0]=0;
+    r[0]=2;
+    for(int i =1;i<19;i++)
     {
         ans*=2;
-
         ll j = ans/2;
-
         while (j<ans)
         {
-            arr[j] = count;
-            j++;
+            r[j++] = ans;
         }
-        count++;
+
+        ll max_1 = ans*2;
+        l[ans] = ans;
+        j = ans+1;
+        while (j<max_1)
+        {
+            l[j++] = ans;
+        }
+        
     }
     
 }
@@ -41,13 +49,39 @@ int main()
     cin>>t;
     while (t--)
     {
-        int l,r;
-        cin>>l>>r;
+        int left,right;
+        cin>>left>>right;
 
-        if((l&(l-1))==0 && (r&(r-1))==0 && l!=1)
-        cout<<arr[r]-arr[l]+1<<"\n";
+        int avg = (left+right)/2;
+
+        int ans = right-left+1;
+
+        int ans1,ans2;
+
+        if(left==right)
+        {
+            cout<<"0"<<"\n";
+            continue;
+        }
+
+        if(l[avg]>left)
+        ans1 = avg-l[avg]+1;
         else
-        cout<<arr[r]-arr[l]<<"\n";
+        ans1=avg-left+1;
+
+
+        if(r[avg]<right)
+        ans2 = r[avg]-avg;
+        else
+        ans2= right-avg;
+
+        if(r[avg]==right)
+        ans2-=1;
+
+
+        ans-=(ans1+ans2);
+
+        cout<<ans<<"\n";
     }
     
 
