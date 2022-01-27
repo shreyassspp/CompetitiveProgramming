@@ -2,6 +2,8 @@
 using namespace std;
 typedef long long ll;
 
+#define f(i,a,b) for(int i = a; i<b;i++)
+
 int main()
 {
     ios::sync_with_stdio(0);

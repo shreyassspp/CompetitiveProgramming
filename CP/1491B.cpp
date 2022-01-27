@@ -2,6 +2,8 @@
 using namespace std;
 typedef long long ll;
 
+#define f(i,a,b) for(int i = a; i<b;i++)
+
 int main()
 {
     ios::sync_with_stdio(0);
@@ -16,35 +18,32 @@ int main()
         int n,u,v;
         cin>>n>>u>>v;
 
-        vector<int> obs(n);
+        int l,sl;
+        bool b1 = 1; // If this is one answer is v+min(u,v).
+        bool b2 =0; //If this is one answer is zero.
+        vector<int> arr(n);
 
-        bool f =1;
-        bool a =1;
-
-        for (int i = 0; i < n; i++)
+        f(i,0,n)
         {
-            /* code */
-            cin>>obs[i];
-            if(i!=0)
+            cin>>arr[i];
+            if(i)
             {
-                if(obs[i]!=obs[i-1])
-                f=0;
+                if(arr[i]!=arr[i-1])
+                b1=0;
 
-                if(abs(obs[i]-obs[i-1])>1)
-                a=0;
+                if(abs(arr[i]-arr[i-1])>1)
+                b2=1;
             }
         }
 
-        if(f)
-        cout<<u+v<<"\n";
-        else if(a)
+        if(b2)
         cout<<0<<"\n";
+        else if(b1)
+        cout<<v+min(u,v)<<"\n";
         else
         cout<<min(u,v)<<"\n";
 
-
-
-        
+    
     }
     
 
